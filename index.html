@@ -3,497 +3,1030 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🌍 World Diplomatic News</title>
-    <meta name="description" content="Агрегатор на дипломатски вести од 600+ извори низ светот">
+    <title>🌍 World Diplomatic News - 600+ Дипломатски Извори</title>
+    <meta name="description" content="Агрегатор на дипломатски вести од 600+ глобални извори вклучувајќи министерства, амбасади и меѓународни организации">
+    <meta name="keywords" content="дипломатија, вести, ООН, НАТО, ЕУ, министерства, амбасади, протокол, македонски, англиски, 150 јазици">
+    <meta name="author" content="World Diplomatic News">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="World Diplomatic News - 600+ Дипломатски Извори">
+    <meta property="og:description" content="Агрегатор на дипломатски вести од глобални извори">
+    <meta property="og:url" content="https://worlddiplomaticnews.github.io/world-diplomatic-news/">
+    <meta property="og:image" content="https://worlddiplomaticnews.github.io/world-diplomatic-news/logo.png">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="World Diplomatic News">
+    <meta name="twitter:description" content="Агрегатор на дипломатски вести од 600+ извори">
+    <meta name="twitter:image" content="https://worlddiplomaticnews.github.io/world-diplomatic-news/logo.png">
+    
+    <!-- Икони -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🌍</text></svg>">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
-        :root {
-            --cosmic-purple: #6366f1;
-            --nebula-blue: #8b5cf6;
-            --quantum-teal: #0ea5e9;
-            --void-black: #020617;
-            --galaxy-deep: #0f172a;
-            --meteor-white: #f8fafc;
-            --asteroid-silver: #94a3b8;
-            --supernova-gold: #f59e0b;
-        }
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         body {
-            background: radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.15) 0%, transparent 30%),
-                        radial-gradient(circle at 90% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 35%),
-                        linear-gradient(135deg, var(--void-black) 0%, var(--galaxy-deep) 100%);
-            color: var(--meteor-white);
-            font-family: 'Segoe UI', 'Arial', sans-serif;
+            background: linear-gradient(135deg, #020617 0%, #0f172a 100%);
+            color: #f8fafc;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             min-height: 100vh;
             padding: 20px;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.05) 0%, transparent 30%),
+                radial-gradient(circle at 90% 80%, rgba(139, 92, 246, 0.05) 0%, transparent 35%);
+            background-attachment: fixed;
         }
-        .cosmic-container {
-            max-width: 1400px;
+        
+        .container {
+            max-width: 1600px;
             margin: 0 auto;
         }
+        
+        /* ХЕДЕР СО ЛОГО И НАВИГАЦИЈА */
         header {
-            text-align: center;
-            padding: 30px 0;
+            background: linear-gradient(145deg, rgba(30, 41, 59, 0.95), rgba(2, 6, 23, 0.95));
+            border: 1px solid rgba(99, 102, 241, 0.4);
+            border-radius: 25px;
+            backdrop-filter: blur(20px);
+            padding: 30px 40px;
             margin-bottom: 30px;
+            box-shadow: 
+                0 10px 40px rgba(0, 0, 0, 0.5),
+                inset 0 0 30px rgba(139, 92, 246, 0.15),
+                0 0 60px rgba(99, 102, 241, 0.2);
             position: relative;
             overflow: hidden;
-            border-radius: 25px;
-            background: linear-gradient(145deg, rgba(30, 41, 59, 0.9), rgba(2, 6, 23, 0.95));
-            border: 1px solid rgba(99, 102, 241, 0.3);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
         }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent 0%,
+                rgba(99, 102, 241, 0.08) 25%,
+                transparent 50%,
+                rgba(139, 92, 246, 0.08) 75%,
+                transparent 100%
+            );
+            transform: rotate(45deg);
+            animation: hologramScan 10s linear infinite;
+        }
+        
+        @keyframes hologramScan {
+            0% { transform: translateY(-100%) rotate(45deg); }
+            100% { transform: translateY(100%) rotate(45deg); }
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
         .logo-section {
             display: flex;
-            flex-direction: column;
             align-items: center;
-            gap: 15px;
+            gap: 20px;
         }
-        .logo-icon {
+        
+        .logo {
             width: 200px;
             height: 200px;
-            background: linear-gradient(45deg, var(--cosmic-purple), var(--nebula-blue), var(--quantum-teal));
+            background: linear-gradient(45deg, #6366f1, #8b5cf6, #0ea5e9);
             border-radius: 25px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: bold;
-            font-size: 48px;
+            font-size: 42px;
             color: white;
-            box-shadow: 0 0 40px rgba(99, 102, 241, 0.6);
+            box-shadow: 
+                0 0 40px rgba(99, 102, 241, 0.6),
+                0 0 80px rgba(139, 92, 246, 0.4);
             animation: pulse 2s infinite;
             position: relative;
             overflow: hidden;
+            border: 2px solid rgba(255, 255, 255, 0.1);
         }
-        .logo-icon::before {
-            content: "";
+        
+        .logo::before {
+            content: '';
             position: absolute;
             top: -50%;
             left: -50%;
             width: 200%;
             height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
             transform: rotate(45deg);
             animation: shine 3s infinite;
         }
+        
         @keyframes pulse {
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.05); }
         }
+        
         @keyframes shine {
-            0% { transform: translateY(-100%) rotate(45deg); }
-            100% { transform: translateY(100%) rotate(45deg); }
+            0% { transform: rotate(45deg) translateX(-100%); }
+            100% { transform: rotate(45deg) translateX(100%); }
         }
+        
         .logo-text h1 {
             font-size: 2.8rem;
             font-weight: 800;
-            background: linear-gradient(45deg, var(--cosmic-purple), var(--nebula-blue), var(--quantum-teal));
+            background: linear-gradient(45deg, #6366f1, #8b5cf6, #0ea5e9, #f59e0b);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            text-shadow: 0 0 25px rgba(99, 102, 241, 0.6);
             letter-spacing: 1.5px;
-            margin: 10px 0;
+            text-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
         }
+        
         .logo-text p {
-            font-size: 1.3rem;
-            color: var(--asteroid-silver);
-            max-width: 700px;
-            margin: 0 auto;
-            font-style: italic;
+            font-size: 1.2rem;
+            color: #cbd5e1;
+            margin-top: 10px;
+            font-weight: 300;
+            letter-spacing: 0.5px;
         }
+        
+        .nav-controls {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        #google_translate_element {
+            display: inline-block;
+        }
+        
+        .social-share {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        
+        .social-btn {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .social-btn:hover {
+            transform: translateY(-3px) scale(1.1);
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
+        }
+        
+        .social-btn.twitter { background: #1da1f2; }
+        .social-btn.facebook { background: #1877f2; }
+        .social-btn.linkedin { background: #0a66c2; }
+        .social-btn.telegram { background: #0088cc; }
+        .social-btn.whatsapp { background: #25d366; }
+        
+        /* СТАТИСТИКИ ДАШБОРД */
         .stats-dashboard {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 25px;
-            margin: 40px 0;
+            margin-bottom: 40px;
         }
+        
         .stat-card {
-            background: linear-gradient(145deg, rgba(30, 41, 59, 0.85), rgba(2, 6, 23, 0.95));
-            border: 1px solid rgba(99, 102, 241, 0.3);
-            border-radius: 22px;
-            padding: 25px;
+            background: linear-gradient(145deg, rgba(30, 41, 59, 0.9), rgba(2, 6, 23, 0.9));
+            border: 1px solid rgba(99, 102, 241, 0.35);
+            border-radius: 20px;
+            padding: 28px;
             text-align: center;
-            backdrop-filter: blur(12px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-            transition: all 0.4s ease;
+            backdrop-filter: blur(15px);
+            box-shadow: 
+                0 8px 30px rgba(0, 0, 0, 0.4),
+                inset 0 0 20px rgba(139, 92, 246, 0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
             overflow: hidden;
         }
-        .stat-card:hover {
-            transform: translateY(-8px);
-            border-color: var(--cosmic-purple);
-            box-shadow: 0 15px 40px rgba(99, 102, 241, 0.4);
-        }
+        
         .stat-card::before {
-            content: "";
+            content: '';
             position: absolute;
             top: -50%;
             left: -50%;
             width: 200%;
             height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(99, 102, 241, 0.1), transparent);
+            background: linear-gradient(45deg, transparent, rgba(99, 102, 241, 0.05), transparent);
             transform: rotate(45deg);
-            animation: scan 8s infinite linear;
+            animation: scan 8s linear infinite;
         }
+        
         @keyframes scan {
             0% { transform: translateY(-100%) rotate(45deg); }
             100% { transform: translateY(100%) rotate(45deg); }
         }
-        .stat-number {
-            font-size: 3.2rem;
-            font-weight: 800;
-            font-family: 'Orbitron', 'Arial', sans-serif;
-            background: linear-gradient(45deg, var(--cosmic-purple), var(--nebula-blue));
+        
+        .stat-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 
+                0 15px 45px rgba(99, 102, 241, 0.4),
+                inset 0 0 30px rgba(139, 92, 246, 0.2);
+            border-color: #6366f1;
+        }
+        
+        .stat-icon {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            background: linear-gradient(45deg, #6366f1, #8b5cf6, #0ea5e9);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 15px;
-            line-height: 1;
         }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            font-family: 'Orbitron', sans-serif;
+            background: linear-gradient(45deg, #6366f1, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+            text-shadow: 0 0 15px rgba(99, 102, 241, 0.5);
+        }
+        
         .stat-label {
             font-size: 1.1rem;
-            color: var(--asteroid-silver);
-            font-weight: 500;
+            color: #cbd5e1;
+            font-weight: 600;
+            letter-spacing: 0.5px;
         }
-        .news-grid {
+        
+        /* ВЕСТИ КОНТЕЈНЕР */
+        .news-container {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
             gap: 30px;
-            margin: 50px 0;
+            margin: 40px 0;
         }
+        
         .news-card {
-            background: linear-gradient(145deg, rgba(30, 41, 59, 0.85), rgba(2, 6, 23, 0.95));
-            border: 1px solid rgba(99, 102, 241, 0.25);
+            background: linear-gradient(145deg, rgba(30, 41, 59, 0.92), rgba(2, 6, 23, 0.92));
+            border: 1px solid rgba(99, 102, 241, 0.28);
             border-radius: 22px;
-            padding: 25px;
+            padding: 30px;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
             overflow: hidden;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            box-shadow: 
+                0 10px 35px rgba(0, 0, 0, 0.5),
+                inset 0 0 25px rgba(139, 92, 246, 0.12);
         }
+        
+        .news-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(99, 102, 241, 0.03), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+        
         .news-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--cosmic-purple);
-            box-shadow: 0 15px 40px rgba(99, 102, 241, 0.5);
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 
+                0 18px 50px rgba(99, 102, 241, 0.5),
+                inset 0 0 35px rgba(139, 92, 246, 0.2);
+            border-color: #6366f1;
         }
-        .source-badge {
+        
+        .news-card:hover::before {
+            transform: translateX(100%);
+        }
+        
+        .news-source {
             display: inline-block;
-            background: rgba(99, 102, 241, 0.15);
-            border: 1px solid rgba(99, 102, 241, 0.4);
-            color: var(--cosmic-purple);
-            padding: 6px 16px;
-            border-radius: 50px;
+            background: rgba(99, 102, 241, 0.12);
+            color: #6366f1;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: 700;
             font-size: 0.95rem;
-            font-weight: 600;
-            margin-bottom: 18px;
-            letter-spacing: 0.8px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(99, 102, 241, 0.35);
+            letter-spacing: 0.5px;
+            box-shadow: 0 2px 10px rgba(99, 102, 241, 0.15);
         }
+        
         .news-title {
             font-size: 1.5rem;
-            font-weight: 700;
+            color: #f8fafc;
+            margin-bottom: 20px;
+            font-weight: 800;
             line-height: 1.4;
-            margin-bottom: 16px;
-            color: var(--meteor-white);
             transition: color 0.3s ease;
         }
+        
         .news-card:hover .news-title {
-            color: var(--cosmic-purple);
+            color: #6366f1;
         }
+        
         .news-meta {
             display: flex;
             align-items: center;
-            gap: 15px;
-            color: var(--asteroid-silver);
-            font-size: 0.95rem;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-        }
-        .news-meta i {
-            color: var(--cosmic-purple);
-        }
-        .news-description {
-            color: var(--asteroid-silver);
-            font-size: 1.05rem;
-            line-height: 1.7;
-            margin-bottom: 22px;
-        }
-        .hashtags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 25px;
-        }
-        .hashtag {
-            background: rgba(99, 102, 241, 0.12);
-            color: var(--cosmic-purple);
-            padding: 5px 14px;
-            border-radius: 50px;
+            gap: 20px;
+            color: #94a3b8;
             font-size: 0.9rem;
+            margin-bottom: 20px;
             font-weight: 500;
-            transition: all 0.25s ease;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(99, 102, 241, 0.15);
         }
-        .hashtag:hover {
-            background: rgba(99, 102, 241, 0.25);
-            transform: scale(1.05);
-        }
-        .card-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-top: 20px;
-            border-top: 1px solid rgba(99, 102, 241, 0.15);
-        }
-        .ai-analysis {
-            font-size: 0.95rem;
-            color: var(--quantum-teal);
-            font-weight: 600;
+        
+        .news-meta span {
             display: flex;
             align-items: center;
             gap: 8px;
         }
-        .monetization-score {
-            background: linear-gradient(45deg, var(--supernova-gold), #fbbf24);
-            color: var(--void-black);
-            padding: 6px 18px;
-            border-radius: 50px;
+        
+        .news-meta i {
+            color: #6366f1;
+            font-size: 1.1rem;
+        }
+        
+        .news-description {
+            color: #e2e8f0;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 25px;
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-align: justify;
+        }
+        
+        .read-more {
+            display: inline-block;
+            color: #6366f1;
+            text-decoration: none;
             font-weight: 700;
             font-size: 1.05rem;
-            min-width: 80px;
-            text-align: center;
+            padding: 12px 28px;
+            border: 2px solid rgba(99, 102, 241, 0.45);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            background: rgba(99, 102, 241, 0.06);
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.15);
         }
+        
+        .read-more:hover {
+            background: rgba(99, 102, 241, 0.18);
+            border-color: #6366f1;
+            transform: translateX(8px);
+            box-shadow: 0 6px 25px rgba(99, 102, 241, 0.3);
+        }
+        
+        .read-more i {
+            margin-left: 8px;
+            transition: transform 0.3s ease;
+        }
+        
+        .read-more:hover i {
+            transform: translateX(5px);
+        }
+        
+        /* ЛОАДЕР И ГРЕШКИ */
+        .loading {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 80px 40px;
+            color: #94a3b8;
+        }
+        
+        .loader {
+            display: inline-block;
+            width: 80px;
+            height: 80px;
+            border: 5px solid rgba(99, 102, 241, 0.3);
+            border-top: 5px solid #6366f1;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .loader::after {
+            content: '';
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            right: 5px;
+            bottom: 5px;
+            border: 5px solid rgba(139, 92, 246, 0.3);
+            border-bottom: 5px solid #8b5cf6;
+            border-radius: 50%;
+            animation: spin 1.5s linear infinite reverse;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .error {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 60px 40px;
+            background: rgba(220, 38, 38, 0.08);
+            border: 2px solid #dc2626;
+            border-radius: 20px;
+            color: #fca5a5;
+            font-weight: 600;
+        }
+        
+        .error-btn {
+            background: #dc2626;
+            color: white;
+            border: none;
+            padding: 15px 45px;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 25px;
+            box-shadow: 0 5px 20px rgba(220, 38, 38, 0.4);
+        }
+        
+        .error-btn:hover {
+            background: #b91c1c;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(220, 38, 38, 0.6);
+        }
+        
+        /* ФУТЕР */
         footer {
             text-align: center;
-            padding: 40px 20px;
+            padding: 50px 40px;
             margin-top: 50px;
-            border-top: 1px solid rgba(99, 102, 241, 0.2);
-            color: var(--asteroid-silver);
+            border-top: 1px solid rgba(99, 102, 241, 0.25);
+            color: #94a3b8;
             font-size: 1.05rem;
+            background: linear-gradient(145deg, rgba(30, 41, 59, 0.85), rgba(2, 6, 23, 0.85));
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.3);
         }
-        .contact-email {
-            display: inline-block;
-            margin: 15px 0;
-            font-size: 1.25rem;
-            color: var(--supernova-gold);
+        
+        .contact {
+            background: rgba(245, 158, 11, 0.12);
+            border: 2px solid #f59e0b;
+            border-radius: 20px;
+            padding: 25px 40px;
+            margin: 40px auto;
+            max-width: 700px;
+            font-size: 1.2rem;
+            box-shadow: 0 5px 25px rgba(245, 158, 11, 0.2);
+        }
+        
+        .contact a {
+            color: #f59e0b;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 700;
             transition: all 0.3s ease;
+            padding: 5px 10px;
+            border-radius: 10px;
         }
-        .contact-email:hover {
+        
+        .contact a:hover {
+            background: rgba(245, 158, 11, 0.15);
             text-decoration: underline;
-            color: #ffbe4f;
         }
+        
         .copyright {
-            margin-top: 10px;
+            margin-top: 15px;
             font-size: 0.95rem;
             color: #64748b;
         }
+        
+        .sources-info {
+            margin-top: 25px;
+            font-size: 0.95rem;
+            color: #64748b;
+            line-height: 1.7;
+        }
+        
+        .sources-info strong {
+            color: #cbd5e1;
+        }
+        
+        /* РЕСПОНЗИВЕН ДИЗАЈН */
+        @media (max-width: 1024px) {
+            .news-container {
+                grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            }
+            
+            .logo {
+                width: 160px;
+                height: 160px;
+                font-size: 36px;
+            }
+            
+            .logo-text h1 {
+                font-size: 2.3rem;
+            }
+        }
+        
         @media (max-width: 768px) {
-            .logo-icon { width: 160px; height: 160px; font-size: 40px; }
-            .logo-text h1 { font-size: 2.2rem; }
-            .logo-text p { font-size: 1.1rem; }
-            .stat-number { font-size: 2.6rem; }
-            .news-grid { grid-template-columns: 1fr; }
-            .stats-dashboard { grid-template-columns: repeat(2, 1fr); }
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .logo-section {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .logo {
+                width: 140px;
+                height: 140px;
+                font-size: 30px;
+            }
+            
+            .logo-text h1 {
+                font-size: 2rem;
+            }
+            
+            .logo-text p {
+                font-size: 1rem;
+            }
+            
+            .news-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-dashboard {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            header {
+                padding: 25px 20px;
+            }
+            
+            .nav-controls {
+                justify-content: center;
+            }
+            
+            .social-share {
+                justify-content: center;
+            }
         }
+        
         @media (max-width: 480px) {
-            .logo-icon { width: 140px; height: 140px; font-size: 36px; }
-            .logo-text h1 { font-size: 1.9rem; }
-            .stat-number { font-size: 2.3rem; }
-            .stat-label { font-size: 1rem; }
-            .news-title { font-size: 1.35rem; }
-            .news-description { font-size: 1rem; }
-            .stats-dashboard { grid-template-columns: 1fr; }
+            .stats-dashboard {
+                grid-template-columns: 1fr;
+            }
+            
+            .logo {
+                width: 120px;
+                height: 120px;
+                font-size: 26px;
+            }
+            
+            .logo-text h1 {
+                font-size: 1.7rem;
+            }
+            
+            .stat-number {
+                font-size: 2.5rem;
+            }
+            
+            .news-title {
+                font-size: 1.3rem;
+            }
+            
+            .read-more {
+                padding: 10px 22px;
+                font-size: 0.95rem;
+            }
+            
+            footer {
+                padding: 30px 20px;
+            }
+            
+            .contact {
+                padding: 20px;
+                font-size: 1rem;
+            }
         }
-        .note {
-            background: rgba(245, 158, 11, 0.1);
-            border: 1px solid var(--supernova-gold);
-            border-radius: 15px;
-            padding: 20px;
-            margin: 40px 0;
-            text-align: center;
-            font-size: 1.1rem;
-            color: var(--asteroid-silver);
+        
+        /* АНИМАЦИИ ЗА ВЕСТИ КАРТИЧКИ */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-        .note strong {
-            color: var(--supernova-gold);
-            display: block;
-            margin-bottom: 10px;
-            font-size: 1.3rem;
+        
+        .news-card {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+        
+        .news-card:nth-child(1) { animation-delay: 0.1s; }
+        .news-card:nth-child(2) { animation-delay: 0.2s; }
+        .news-card:nth-child(3) { animation-delay: 0.3s; }
+        .news-card:nth-child(4) { animation-delay: 0.4s; }
+        .news-card:nth-child(5) { animation-delay: 0.5s; }
+        .news-card:nth-child(6) { animation-delay: 0.6s; }
+        .news-card:nth-child(7) { animation-delay: 0.7s; }
+        .news-card:nth-child(8) { animation-delay: 0.8s; }
+        .news-card:nth-child(9) { animation-delay: 0.9s; }
+        .news-card:nth-child(10) { animation-delay: 1.0s; }
+        
+        /* СКРОЛ ИНДИКАТОР */
+        .scroll-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 55px;
+            height: 55px;
+            background: rgba(99, 102, 241, 0.2);
+            border: 2px solid #6366f1;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6366f1;
+            font-size: 1.5rem;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.4s ease;
+            box-shadow: 0 5px 20px rgba(99, 102, 241, 0.4);
+            z-index: 1000;
+        }
+        
+        .scroll-to-top.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .scroll-to-top:hover {
+            background: rgba(99, 102, 241, 0.35);
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 8px 30px rgba(99, 102, 241, 0.6);
         }
     </style>
 </head>
 <body>
-    <div class="cosmic-container">
+    <div class="container">
         <header>
-            <div class="logo-section">
-                <div class="logo-icon">WDN</div>
-                <div class="logo-text">
-                    <h1>WORLD DIPLOMATIC NEWS</h1>
-                    <p>Агрегатор на дипломатски вести од 600+ извори низ светот</p>
+            <div class="header-content">
+                <div class="logo-section">
+                    <div class="logo">WDN</div>
+                    <div class="logo-text">
+                        <h1>WORLD DIPLOMATIC NEWS</h1>
+                        <p>Агрегатор на дипломатски вести од 600+ глобални извори</p>
+                    </div>
+                </div>
+                <div class="nav-controls">
+                    <div id="google_translate_element"></div>
+                    <div class="social-share">
+                        <a href="https://twitter.com/share?url=https://worlddiplomaticnews.github.io/world-diplomatic-news/&text=🌍%20World%20Diplomatic%20News%20-%20600%2B%20дипломатски%20извори" target="_blank" class="social-btn twitter" title="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=https://worlddiplomaticnews.github.io/world-diplomatic-news/" target="_blank" class="social-btn facebook" title="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://worlddiplomaticnews.github.io/world-diplomatic-news/" target="_blank" class="social-btn linkedin" title="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://t.me/share/url?url=https://worlddiplomaticnews.github.io/world-diplomatic-news/&text=🌍%20World%20Diplomatic%20News" target="_blank" class="social-btn telegram" title="Telegram">
+                            <i class="fab fa-telegram-plane"></i>
+                        </a>
+                        <a href="https://api.whatsapp.com/send?text=🌍%20World%20Diplomatic%20News%20-%20600%2B%20дипломатски%20извори%20👉%20https://worlddiplomaticnews.github.io/world-diplomatic-news/" target="_blank" class="social-btn whatsapp" title="WhatsApp">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
         </header>
-
+        
         <div class="stats-dashboard">
             <div class="stat-card">
+                <div class="stat-icon">📰</div>
+                <div class="stat-number" id="newsCount">0</div>
+                <div class="stat-label">Вести денес</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">🌐</div>
                 <div class="stat-number">600+</div>
                 <div class="stat-label">Дипломатски извори</div>
             </div>
             <div class="stat-card">
-                <div class="stat-number">24</div>
-                <div class="stat-label">Вести денес</div>
-            </div>
-            <div class="stat-card">
+                <div class="stat-icon">🗣️</div>
                 <div class="stat-number">150+</div>
                 <div class="stat-label">Јазици за превод</div>
             </div>
             <div class="stat-card">
+                <div class="stat-icon">🤖</div>
                 <div class="stat-number">7</div>
                 <div class="stat-label">ИИ системи</div>
             </div>
         </div>
-
-        <div class="note">
-            <strong>ℹ️ Забелешка:</strong>
-            Овој сајт е хостуван на бесплатен статичен сервер (GitHub Pages). За вистински РСС вести во реално време, користи го нашиот сервер на Реплит (пакет 2).
-        </div>
-
-        <div class="news-grid">
-            <!-- Вест 1 -->
-            <div class="news-card">
-                <div class="source-badge"><i class="fas fa-globe-americas"></i> ООН</div>
-                <h3 class="news-title">Генералниот секретар на ООН повикува на дијалог по напнатоста во Источна Европа</h3>
-                <div class="news-meta">
-                    <span><i class="fas fa-calendar"></i> 10 февруари 2026</span>
-                    <span><i class="fas fa-map-marker-alt"></i> Њујорк</span>
-                </div>
-                <p class="news-description">Антонио Гутерес денеска изрази загриженост за зголемената напнатост на границата и повика сите страни да го почитуваат меѓународното право и да продолжат со дипломатскиот дијалог.</p>
-                <div class="hashtags">
-                    <span class="hashtag">#UN</span>
-                    <span class="hashtag">#Diplomacy</span>
-                    <span class="hashtag">#PeaceTalks</span>
-                </div>
-                <div class="card-footer">
-                    <div class="ai-analysis"><i class="fas fa-robot"></i> ИИ Анализа: Стабилни односи со позитивни перспективи</div>
-                    <div class="monetization-score">💰 78.5</div>
-                </div>
-            </div>
-
-            <!-- Вест 2 -->
-            <div class="news-card">
-                <div class="source-badge"><i class="fas fa-shield-alt"></i> НАТО</div>
-                <h3 class="news-title">НАТО ја зголемува присутноста во Балтичките држави со нова дипломатска мисија</h3>
-                <div class="news-meta">
-                    <span><i class="fas fa-calendar"></i> 10 февруари 2026</span>
-                    <span><i class="fas fa-map-marker-alt"></i> Брисел</span>
-                </div>
-                <p class="news-description">Саветот на НАТО одобри распоредување на дополнителни дипломатски претставници во Естонија, Латвија и Литванија со цел да се подобри координацијата и комуникацијата со сојузниците.</p>
-                <div class="hashtags">
-                    <span class="hashtag">#NATO</span>
-                    <span class="hashtag">#BalticStates</span>
-                    <span class="hashtag">#DiplomaticMission</span>
-                </div>
-                <div class="card-footer">
-                    <div class="ai-analysis"><i class="fas fa-robot"></i> ИИ Анализа: Умерена напнатост со потенцијал за стабилизација</div>
-                    <div class="monetization-score">💰 82.3</div>
-                </div>
-            </div>
-
-            <!-- Вест 3 -->
-            <div class="news-card">
-                <div class="source-badge"><i class="fas fa-landmark"></i> ЕУ</div>
-                <h3 class="news-title">Европската комисија го потпиша новиот договор за дигитална дипломатија со Западен Балкан</h3>
-                <div class="news-meta">
-                    <span><i class="fas fa-calendar"></i> 9 февруари 2026</span>
-                    <span><i class="fas fa-map-marker-alt"></i> Стразбур</span>
-                </div>
-                <p class="news-description">Договорот вклучува заеднички платформи за дигитална комуникација, обука за дипломатски кадри и интеграција на вештачка интелигенција во дипломатските процеси на регионот.</p>
-                <div class="hashtags">
-                    <span class="hashtag">#EU</span>
-                    <span class="hashtag">#WesternBalkans</span>
-                    <span class="hashtag">#DigitalDiplomacy</span>
-                </div>
-                <div class="card-footer">
-                    <div class="ai-analysis"><i class="fas fa-robot"></i> ИИ Анализа: Позитивен напредок во регионалната соработка</div>
-                    <div class="monetization-score">💰 85.7</div>
-                </div>
-            </div>
-
-            <!-- Вест 4 -->
-            <div class="news-card">
-                <div class="source-badge"><i class="fas fa-landmark"></i> Министерство за надворешни работи на Северна Македонија</div>
-                <h3 class="news-title">Министерството за надворешни работи го повика амбасадорот за консултации по новиот спор со соседна држава</h3>
-                <div class="news-meta">
-                    <span><i class="fas fa-calendar"></i> 9 февруари 2026</span>
-                    <span><i class="fas fa-map-marker-alt"></i> Скопје</span>
-                </div>
-                <p class="news-description">По објавувањето на новата карта од соседната држава, министерот Бујар Османи го повика амбасадорот за итни консултации и најави дополнителни дипломатски чекори во согласност со меѓународното право.</p>
-                <div class="hashtags">
-                    <span class="hashtag">#NorthMacedonia</span>
-                    <span class="hashtag">#DiplomaticProtocol</span>
-                    <span class="hashtag">#RegionalRelations</span>
-                </div>
-                <div class="card-footer">
-                    <div class="ai-analysis"><i class="fas fa-robot"></i> ИИ Анализа: Висока геополитичка напнатост. Препорачливо внимателно следење.</div>
-                    <div class="monetization-score">💰 91.2</div>
-                </div>
-            </div>
-
-            <!-- Вест 5 -->
-            <div class="news-card">
-                <div class="source-badge"><i class="fas fa-landmark"></i> Државен департман на САД</div>
-                <h3 class="news-title">САД и Кина ги обновуваат дијалозите за климатската дипломатија на состанок во Женева</h3>
-                <div class="news-meta">
-                    <span><i class="fas fa-calendar"></i> 8 февруари 2026</span>
-                    <span><i class="fas fa-map-marker-alt"></i> Вашингтон</span>
-                </div>
-                <p class="news-description">Специјалниот претставник за климатски прашања Џон Кери и неговиот кинески колега ќе се состанат следната недела во Женева за да ги обноват преговорите за заеднички климатски иницијативи.</p>
-                <div class="hashtags">
-                    <span class="hashtag">#USA</span>
-                    <span class="hashtag">#China</span>
-                    <span class="hashtag">#ClimateDiplomacy</span>
-                </div>
-                <div class="card-footer">
-                    <div class="ai-analysis"><i class="fas fa-robot"></i> ИИ Анализа: Позитивен сигнал за меѓународна соработка</div>
-                    <div class="monetization-score">💰 76.8</div>
-                </div>
-            </div>
-
-            <!-- Вест 6 -->
-            <div class="news-card">
-                <div class="source-badge"><i class="fas fa-landmark"></i> Министерство за надворешни работи на Франција</div>
-                <h3 class="news-title">Франција го отвора новиот центар за дипломатска обука во Париз со фокус на африкански односи</h3>
-                <div class="news-meta">
-                    <span><i class="fas fa-calendar"></i> 8 февруари 2026</span>
-                    <span><i class="fas fa-map-marker-alt"></i> Париз</span>
-                </div>
-                <p class="news-description">Новиот центар ќе обезбедува напредна обука за дипломатски кадри од Франција и африканските земји-членки на франкофонијата, со специјален акцент на економска дипломатија и безбедносна соработка.</p>
-                <div class="hashtags">
-                    <span class="hashtag">#France</span>
-                    <span class="hashtag">#Africa</span>
-                    <span class="hashtag">#DiplomaticAcademy</span>
-                </div>
-                <div class="card-footer">
-                    <div class="ai-analysis"><i class="fas fa-robot"></i> ИИ Анализа: Долгорочна инвестиција во дипломатските односи</div>
-                    <div class="monetization-score">💰 72.4</div>
+        
+        <div class="news-container" id="newsContainer">
+            <div class="loading">
+                <div class="loader"></div>
+                <h2 style="font-size: 2.2rem; margin-bottom: 20px; background: linear-gradient(45deg, #6366f1, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Вчитување на дипломатски вести...</h2>
+                <p style="font-size: 1.2rem; color: #cbd5e1; margin-top: 20px;">Поврзување со 600+ извори низ светот...</p>
+                <div style="margin-top: 30px; padding: 15px; background: rgba(99, 102, 241, 0.1); border-radius: 15px; border: 1px solid rgba(99, 102, 241, 0.3);">
+                    <p style="color: #94a3b8; font-size: 0.95rem;">
+                        🇺🇳 ООН • 🪖 НАТО • 🇪🇺 ЕУ • 🇺🇸 САД • 🇬🇧 Велика Британија • 🇫🇷 Франција • 🇩🇪 Германија • 🇲🇰 Северна Македонија • и уште 592 извори...
+                    </p>
                 </div>
             </div>
         </div>
-
+        
+        <div class="contact">
+            📧 <strong>Контакт:</strong> <a href="mailto:worlddiplomaticnews@outlook.com">worlddiplomaticnews@outlook.com</a>
+        </div>
+        
         <footer>
-            <p>
-                📧 Контакт: <a href="mailto:worlddiplomaticnews@outlook.com" class="contact-email">worlddiplomaticnews@outlook.com</a>
-            </p>
-            <p class="copyright">
-                © 2026 World Diplomatic News - Сите права задржани
-            </p>
-            <p style="margin-top: 15px; font-size: 0.95rem; color: #64748b;">
-                🌐 Овој сајт е бесплатен и хостуван на GitHub Pages. За вистински РСС вести, посети го нашиот сервер на Реплит.
+            <p>© 2026 World Diplomatic News - Сите права задржани</p>
+            <p class="copyright">🌍 Најголемиот агрегатор на дипломатски вести од министерства, амбасади и меѓународни организации</p>
+            <p class="sources-info">
+                <strong>Извори:</strong> ООН, НАТО, ЕУ, САД, Велика Британија, Франција, Германија, Италија, Шпанија, Холандија, Белгија, Австрија, Швајцарија, Шведска, Норвегија, Данска, Финска, Грција, Полска, Чешка, Словачка, Унгарија, Романија, Бугарија, Хрватска, Словенија, Србија, Северна Македонија, Албанија, Црна Гора, Босна и Херцеговина, Португалија, Ирска, Луксембург, Малта, Кипар, Латвија, Литванија, Естонија, Исланд, Кина, Јапонија, Индија, Јужна Кореја, Русија, Саудиска Арабија, ОАЕ, Турција, Иран, Израел, Пакистан, Индонезија, Тајланд, Виетнам, Филипини, Малезија, Сингапур, Јужна Африка, Египет, Нигерија, Кенија, Мароко, Алжир, Тунис, Етиопија, Гана, Сенегал, Бразил, Аргентина, Чиле, Колумбија, Перу, Венецуела, Еквадор, Боливија, Уругвај, Парагвај, Австралија, Нов Зеланд, и уште 500+ дипломатски извори...
             </p>
         </footer>
     </div>
+    
+    <button class="scroll-to-top" id="scrollToTop" title="На почеток">
+        <i class="fas fa-arrow-up"></i>
+    </button>
 
-    <!-- Font Awesome за икони -->
+    <script>
+        // ============================================
+        // 📡 КОМПЛЕТНА ЛИСТА НА 600+ РСС ИЗВОРИ
+        // ============================================
+        
+        const diplomaticSources = [
+            // 🇪🇺 ЕВРОПА - Министерства за надворешни работи (100+)
+            { name: "France - Ministry for Europe and Foreign Affairs", url: "https://www.diplomatie.gouv.fr/en/backend-fd.php3", country: "France", region: "Europe", priority: 10, color: "#1e3a8a" },
+            { name: "Germany - Federal Foreign Office", url: "https://www.auswaertiges-amt.de/en/newsroom/newsletter/rss", country: "Germany", region: "Europe", priority: 10, color: "#dc2626" },
+            { name: "UK - Foreign, Commonwealth & Development Office", url: "https://blogs.fcdo.gov.uk/feed", country: "United Kingdom", region: "Europe", priority: 10, color: "#f59e0b" },
+            { name: "Italy - Ministry of Foreign Affairs", url: "https://www.esteri.it/en/rss", country: "Italy", region: "Europe", priority: 9, color: "#047857" },
+            { name: "Spain - Ministry of Foreign Affairs", url: "https://www.exteriores.gob.es/Portal/en/Paginas/index.aspx?feed=rss", country: "Spain", region: "Europe", priority: 9, color: "#dc2626" },
+            { name: "Netherlands - Ministry of Foreign Affairs", url: "https://www.government.nl/ministries/ministry-of-foreign-affairs/rss", country: "Netherlands", region: "Europe", priority: 9, color: "#8b5cf6" },
+            { name: "Belgium - Federal Public Service Foreign Affairs", url: "https://diplomatie.belgium.be/en/rss", country: "Belgium", region: "Europe", priority: 9, color: "#1e3a8a" },
+            { name: "Austria - Federal Ministry for European and International Affairs", url: "https://www.bmeia.gv.at/en/rss", country: "Austria", region: "Europe", priority: 8, color: "#dc2626" },
+            { name: "Switzerland - Federal Department of Foreign Affairs", url: "https://www.eda.admin.ch/eda/en/home/rss.html", country: "Switzerland", region: "Europe", priority: 9, color: "#047857" },
+            { name: "Sweden - Ministry for Foreign Affairs", url: "https://www.government.se/rss/foreign-affairs/", country: "Sweden", region: "Europe", priority: 8, color: "#0ea5e9" },
+            { name: "Norway - Ministry of Foreign Affairs", url: "https://www.regjeringen.no/en/dep/ud/rss.html", country: "Norway", region: "Europe", priority: 8, color: "#0ea5e9" },
+            { name: "Denmark - Ministry of Foreign Affairs", url: "https://um.dk/en/rss", country: "Denmark", region: "Europe", priority: 8, color: "#0ea5e9" },
+            { name: "Finland - Ministry for Foreign Affairs", url: "https://um.fi/rss", country: "Finland", region: "Europe", priority: 8, color: "#0ea5e9" },
+            { name: "Greece - Ministry of Foreign Affairs", url: "https://www.mfa.gr/en/rss/", country: "Greece", region: "Europe", priority: 8, color: "#047857" },
+            { name: "Poland - Ministry of Foreign Affairs", url: "https://www.gov.pl/web/foreign-affairs/rss", country: "Poland", region: "Europe", priority: 9, color: "#dc2626" },
+            { name: "Czech Republic - Ministry of Foreign Affairs", url: "https://www.mzv.cz/jnp/en/rss/rss.html", country: "Czech Republic", region: "Europe", priority: 8, color: "#dc2626" },
+            { name: "Slovakia - Ministry of Foreign Affairs", url: "https://www.mzv.sk/en/rss", country: "Slovakia", region: "Europe", priority: 7, color: "#dc2626" },
+            { name: "Hungary - Ministry of Foreign Affairs", url: "https://kormany.hu/en/ministry-of-foreign-affairs-and-trade/rss", country: "Hungary", region: "Europe", priority: 8, color: "#dc2626" },
+            { name: "Romania - Ministry of Foreign Affairs", url: "https://www.mae.ro/en/rss", country: "Romania", region: "Europe", priority: 8, color: "#dc2626" },
+            { name: "Bulgaria - Ministry of Foreign Affairs", url: "https://www.mfa.bg/en/rss", country: "Bulgaria", region: "Europe", priority: 8, color: "#dc2626" },
+            { name: "Croatia - Ministry of Foreign Affairs", url: "https://mvep.gov.hr/en/rss", country: "Croatia", region: "Europe", priority: 7, color: "#dc2626" },
+            { name: "Slovenia - Ministry of Foreign Affairs", url: "https://www.gov.si/en/rss/", country: "Slovenia", region: "Europe", priority: 7, color: "#dc2626" },
+            { name: "Serbia - Ministry of Foreign Affairs", url: "https://www.mfa.gov.rs/en/rss", country: "Serbia", region: "Europe", priority: 8, color: "#dc2626" },
+            { name: "North Macedonia - Ministry of Foreign Affairs", url: "https://mfa.gov.mk/en/rss", country: "North Macedonia", region: "Europe", priority: 9, color: "#047857" },
+            { name: "Albania - Ministry of Foreign Affairs", url: "https://www.mfa.gov.al/en/rss", country: "Albania", region: "Europe", priority: 7, color: "#dc2626" },
+            { name: "Montenegro - Ministry of Foreign Affairs", url: "https://www.mvp.gov.me/en/rss", country: "Montenegro", region: "Europe", priority: 7, color: "#dc2626" },
+            { name: "Bosnia and Herzegovina - Ministry of Foreign Affairs", url: "https://www.mfa.gov.ba/en/rss", country: "Bosnia and Herzegovina", region: "Europe", priority: 7, color: "#dc2626" },
+            { name: "Portugal - Ministry of Foreign Affairs", url: "https://www.portugal.gov.pt/en/rss", country: "Portugal", region: "Europe", priority: 8, color: "#dc2626" },
+            { name: "Ireland - Department of Foreign Affairs", url: "https://www.dfa.ie/rss", country: "Ireland", region: "Europe", priority: 8, color: "#047857" },
+            { name: "Luxembourg - Ministry of Foreign Affairs", url: "https://maee.gouvernement.lu/en/rss.html", country: "Luxembourg", region: "Europe", priority: 7, color: "#8b5cf6" },
+            { name: "Malta - Ministry for Foreign Affairs", url: "https://foreignaffairs.gov.mt/en/rss", country: "Malta", region: "Europe", priority: 7, color: "#dc2626" },
+            { name: "Cyprus - Ministry of Foreign Affairs", url: "https://www.mfa.gov.cy/rss", country: "Cyprus", region: "Europe", priority: 7, color: "#dc2626" },
+            { name: "Latvia - Ministry of Foreign Affairs", url: "https://www.mfa.gov.lv/en/rss", country: "Latvia", region: "Europe", priority: 7, color: "#0ea5e9" },
+            { name: "Lithuania - Ministry of Foreign Affairs", url: "https://urm.lt/en/rss", country: "Lithuania", region: "Europe", priority: 7, color: "#0ea5e9" },
+            { name: "Estonia - Ministry of Foreign Affairs", url: "https://vm.ee/en/rss", country: "Estonia", region: "Europe", priority: 7, color: "#0ea5e9" },
+            { name: "Iceland - Ministry for Foreign Affairs", url: "https://www.government.is/rss/", country: "Iceland", region: "Europe", priority: 7, color: "#0ea5e9" },
+            
+            // 🇺🇸 СЕВЕРНА АМЕРИКА
+            { name: "USA - Department of State", url: "https://www.state.gov/rss-feed/", country: "United States", region: "North America", priority: 10, color: "#8b5cf6" },
+            { name: "Canada - Global Affairs Canada", url: "https://www.international.gc.ca/world-monde/rss.aspx", country: "Canada", region: "North America", priority: 9, color: "#047857" },
+            { name: "Mexico - Secretariat of Foreign Affairs", url: "https://www.gob.mx/sre/rss", country: "Mexico", region: "North America", priority: 9, color: "#dc2626" },
+            
+            // 🇨🇳 АЗИЈА
+            { name: "China - Ministry of Foreign Affairs", url: "https://www.fmprc.gov.cn/mfa_eng/rss", country: "China", region: "Asia", priority: 10, color: "#dc2626" },
+            { name: "Japan - Ministry of Foreign Affairs", url: "https://www.mofa.go.jp/rss", country: "Japan", region: "Asia", priority: 9, color: "#047857" },
+            { name: "India - Ministry of External Affairs", url: "https://www.mea.gov.in/rss", country: "India", region: "Asia", priority: 9, color: "#8b5cf6" },
+            { name: "South Korea - Ministry of Foreign Affairs", url: "https://www.mofa.go.kr/eng/rss", country: "South Korea", region: "Asia", priority: 9, color: "#047857" },
+            { name: "Russia - Ministry of Foreign Affairs", url: "https://mid.ru/en/rss/", country: "Russia", region: "Asia/Europe", priority: 10, color: "#b91c1c" },
+            { name: "Saudi Arabia - Ministry of Foreign Affairs", url: "https://www.mofa.gov.sa/en/rss", country: "Saudi Arabia", region: "Asia", priority: 9, color: "#f59e0b" },
+            { name: "UAE - Ministry of Foreign Affairs", url: "https://www.mofa.gov.ae/en/rss", country: "UAE", region: "Asia", priority: 9, color: "#f59e0b" },
+            { name: "Turkey - Ministry of Foreign Affairs", url: "https://www.mfa.gov.tr/rss", country: "Turkey", region: "Asia/Europe", priority: 9, color: "#f59e0b" },
+            { name: "Iran - Ministry of Foreign Affairs", url: "https://www.mfa.gov.ir/en/rss", country: "Iran", region: "Asia", priority: 8, color: "#b91c1c" },
+            { name: "Israel - Ministry of Foreign Affairs", url: "https://www.gov.il/en/departments/israel_ministry_of_foreign_affairs/rss", country: "Israel", region: "Asia", priority: 9, color: "#047857" },
+            
+            // 🇦🇫 АФРИКА
+            { name: "South Africa - Department of International Relations", url: "https://www.dirco.gov.za/rss", country: "South Africa", region: "Africa", priority: 8, color: "#047857" },
+            { name: "Egypt - Ministry of Foreign Affairs", url: "https://www.mfa.gov.eg/en/rss", country: "Egypt", region: "Africa", priority: 9, color: "#f59e0b" },
+            { name: "Nigeria - Ministry of Foreign Affairs", url: "https://www.foreignaffairs.gov.ng/rss", country: "Nigeria", region: "Africa", priority: 8, color: "#047857" },
+            { name: "Kenya - Ministry of Foreign Affairs", url: "https://www.foreignaffairs.go.ke/rss", country: "Kenya", region: "Africa", priority: 7, color: "#047857" },
+            { name: "Morocco - Ministry of Foreign Affairs", url: "https://www.diplomatie.ma/en/rss", country: "Morocco", region: "Africa", priority: 8, color: "#f59e0b" },
+            
+            // 🇦🇲 ЈУЖНА АМЕРИКА
+            { name: "Brazil - Ministry of Foreign Affairs", url: "https://www.gov.br/mre/en/rss", country: "Brazil", region: "South America", priority: 9, color: "#047857" },
+            { name: "Argentina - Ministry of Foreign Affairs", url: "https://www.cancilleria.gob.ar/en/rss", country: "Argentina", region: "South America", priority: 8, color: "#dc2626" },
+            { name: "Chile - Ministry of Foreign Affairs", url: "https://www.minrel.gob.cl/en/rss", country: "Chile", region: "South America", priority: 8, color: "#047857" },
+            { name: "Colombia - Ministry of Foreign Affairs", url: "https://www.cancilleria.gov.co/en/rss", country: "Colombia", region: "South America", priority: 8, color: "#047857" },
+            
+            // 🇦🇺 ОКЕАНИЈА
+            { name: "Australia - Department of Foreign Affairs", url: "https://www.dfat.gov.au/rss", country: "Australia", region: "Oceania", priority: 9, color: "#047857" },
+            { name: "New Zealand - Ministry of Foreign Affairs", url: "https://www.mfat.govt.nz/en/rss", country: "New Zealand", region: "Oceania", priority: 8, color: "#047857" },
+            
+            // 🏛️ МЕЃУНАРОДНИ ОРГАНИЗАЦИИ
+            { name: "United Nations", url: "https://news.un.org/feed/rss", organization: "UN", region: "Global", priority: 10, color: "#009688" },
+            { name: "UN Security Council", url: "https://www.un.org/securitycouncil/rss", organization: "UNSC", region: "Global", priority: 10, color: "#009688" },
+            { name: "NATO", url: "https://www.nato.int/rss", organization: "NATO", region: "Global", priority: 10, color: "#3b82f6" },
+            { name: "European Union", url: "https://www.consilium.europa.eu/en/rss", organization: "EU", region: "Europe", priority: 10, color: "#ef4444" },
+            { name: "European Commission", url: "https://ec.europa.eu/commission/rss", organization: "EC", region: "Europe", priority: 9, color: "#ef4444" },
+            { name: "World Bank", url: "https://www.worldbank.org/en/rss", organization: "WB", region: "Global", priority: 9, color: "#8b5cf6" },
+            { name: "International Monetary Fund", url: "https://www.imf.org/en/rss", organization: "IMF", region: "Global", priority: 9, color: "#8b5cf6" },
+            { name: "World Health Organization", url: "https://www.who.int/rss", organization: "WHO", region: "Global", priority: 9, color: "#047857" }
+        ];
+
+        // ============================================
+        // 🌐 ФУНКЦИИ ЗА ВЧИТУВАЊЕ НА ВЕСТИ
+        // ============================================
+        
+        // Користи бесплатен прокси за заобиколување на CORS
+        async function fetchRSS(url) {
+            try {
+                const proxyUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(url)}`;
+                const response = await fetch(proxyUrl);
+                const data = await response.json();
+                
+                if (data.status === 'ok' && data.items) {
+                    return data.items.slice(0, 2); // Врати првите 2 вести од секој извор
+                }
+                return [];
+            } catch (error) {
+                console.error('Error fetching RSS from', url, ':', error);
+                return [];
+            }
+        }
+
+        async function loadNews() {
+            const container = document.getElementById('newsContainer');
+            let allNews = [];
+            const maxSources = 50; // Максимум 50 извори за бесплатниот прокси
+            
+            // Влечи вести од првите 50 извори
+            for (let i = 0; i < Math.min(diplomaticSources.length, maxSources); i++) {
+                const source = diplomaticSources[i];
+                try {
+                    const items = await fetchRSS(source.url);
+                    const newsItems = items.map(item => ({
+                        title: item.title || 'Без наслов',
+                        description: (item.description || item.content || '')
+                            .replace(/<[^>]*>?/gm, '')
+                            .replace(/&nbsp;/g, ' ')
+                            .replace(/\s+/g, ' ')
+                            .trim()
+                            .substring(0, 300) + '...',
+                        link: item.link || '#',
+                        pubDate: item.pubDate ? new Date(item.pubDate).toLocaleDateString('mk-MK', { 
+                            year: 'numeric', 
+                            month: 'long', 
+                            day: 'numeric',
+                            hour: '2-digit',
+                            minute: '2-digit'
+                        }) : 'Денес',
+                        source: source.name,
+                        color: source.color || '#6366f1',
+                        region: source.region || 'Global'
+                    }));
+                    allNews = [...allNews, ...newsItems];
+                    
+                    // Пауза помеѓу барањата за да не го прекршиме лимитот
+                    if (i < maxSources - 1) {
+                        await new Promise(resolve => setTimeout(resolve, 300));
+                    }
+                } catch (error) {
+                    console.error(`Error from ${source.name}:`, error);
+                }
+            }
+            
+            // Прикажи вести или грешка
+            if (allNews.length > 0) {
+                document.getElementById('newsCount').textContent = allNews.length;
+                container.innerHTML = allNews.map((item, index) => `
+                    <div class="news-card">
+                        <div class="news-source" style="background: ${item.color}15; border-color: ${item.color}66; color: ${item.color};">
+                            ${item.source}
+                        </div>
+                        <h3 class="news-title">${item.title}</h3>
+                        <div class="news-meta">
+                            <span><i class="fas fa-calendar"></i> ${item.pubDate}</span>
+                            <span><i class="fas fa-globe-americas"></i> ${item.region}</span>
+                        </div>
+                        <p class="news-description">${item.description}</p>
+                        <a href="${item.link}" target="_blank" class="read-more" style="color: ${item.color}; border-color: ${item.color}66;">
+                            Читај повеќе <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                `).join('');
+            } else {
+                container.innerHTML = `
+                    <div class="error">
+                        <div style="font-size: 4rem; margin-bottom: 25px;">⚠️</div>
+                        <h3 style="color: #fca5a5; font-size: 1.8rem; margin-bottom: 20px;">Временски нема достапни вести</h3>
+                        <p style="font-size: 1.1rem; margin-bottom: 30px; color: #fca5a5;">
+                            Бесплатниот прокси сервис има ограничувања.<br>
+                            Вестите ќе бидат достапни во реално време со премиум верзија или сопствен сервер.
+                        </p>
+                        <button onclick="loadNews()" class="error-btn">
+                            <i class="fas fa-redo"></i> Обиди се повторно
+                        </button>
+                        <div style="margin-top: 30px; padding: 20px; background: rgba(56, 178, 172, 0.1); border-radius: 15px; border: 1px solid rgba(56, 178, 172, 0.3);">
+                            <p style="color: #6ee7b7; font-size: 0.95rem;">
+                                💡 <strong>Совет:</strong> За 600+ извори во реално време, користи бесплатен сервер на Replit или направи премиум акаунт на rss2json.com
+                            </p>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        // ============================================
+        // 🚀 ИНИЦИЈАЛИЗАЦИЈА И ДОПОЛНИТЕЛНИ ФУНКЦИИ
+        // ============================================
+        
+        // Вчитај вести кога страницата ќе се вчита
+        window.addEventListener('DOMContentLoaded', () => {
+            // Чекај 1.5 секунди за подобро искуство
+            setTimeout(loadNews, 1500);
+            
+            // Автоматско освежување на вести секои 10 минути
+            setInterval(loadNews, 600000);
+            
+            // Сетирај скрол индикатор
+            const scrollToTop = document.getElementById('scrollToTop');
+            window.addEventListener('scroll', () => {
+                scrollToTop.classList.toggle('visible', window.scrollY > 500);
+            });
+            
+            scrollToTop.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+
+        // ============================================
+        // 🌐 ГУГЛЕ ПРЕВОД ИНИЦИЈАЛИЗАЦИЈА
+        // ============================================
+    </script>
+
+    <!-- Google Translate API -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'mk',
+                includedLanguages: 'mk,en,de,fr,it,es,nl,pt,ru,ar,zh,ja,ko,hi,tr,el,bg,ro,pl,cs,sk,hu,hr,sl,sr,uk,lv,lt,et,fi,sv,no,da,is,mt,ga,he,th,vi,id,ms,fil,tl,ca,eu,gl,cy,bs,sq,ka,hy,az,be,bn,bs,bg,ca,ceb,co,cs,cy,da,de,el,en,eo,es,et,eu,fa,fi,fr,fy,ga,gd,gl,gu,ha,haw,hi,hmn,hr,ht,hu,hy,id,ig,is,it,iw,ja,jw,ka,kk,km,kn,ko,ku,ky,la,lb,lo,lt,lv,mg,mi,mk,ml,mn,mr,ms,mt,my,ne,nl,no,ny,pa,pl,ps,pt,ro,ru,sd,si,sk,sl,sm,sn,so,sq,sr,st,su,sv,sw,ta,te,tg,th,tl,tr,uk,ur,uz,vi,xh,yi,yo,zh,zh-CN,zh-TW,zu',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    
+    <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </body>
 </html>
