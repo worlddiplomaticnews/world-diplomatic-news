@@ -1,37 +1,273 @@
 <!DOCTYPE html>
 <html lang="mk">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>🌍 World Diplomatic News</title>
-<style>
-body{background:linear-gradient(135deg,#020617 0%,#0f172a 100%);color:#fff;font-family:Arial;text-align:center;padding:40px}
-.logo{width:150px;height:150px;background:linear-gradient(45deg,#6366f1,#8b5cf6,#0ea5e9);border-radius:20px;margin:0 auto 30px;display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:bold;color:white;box-shadow:0 0 30px rgba(99,102,241,.5);animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
-h1{font-size:2.3rem;background:linear-gradient(45deg,#6366f1,#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin:20px 0}
-.stats{display:flex;justify-content:center;gap:25px;margin:40px 0;flex-wrap:wrap}
-.stat{background:rgba(30,41,59,.8);padding:20px;border-radius:15px;min-width:140px}
-.num{font-size:2.2rem;color:#6366f1;font-weight:bold}
-.contact{background:rgba(245,158,11,.1);border:1px solid #f59e0b;border-radius:10px;padding:15px;margin:30px auto;max-width:500px}
-</style>
-</head>
-<body>
-<div class="logo">WDN</div>
-<h1>WORLD DIPLOMATIC NEWS</h1>
-<p>🌍 Агрегатор на дипломатски вести од 600+ извори</p>
-<div class="stats">
-<div class="stat"><div class="num">600+</div>Извори</div>
-<div class="stat"><div class="num">150+</div>Јазици</div>
-<div class="stat"><div class="num">7</div>ИИ системи</div>
-</div>
-<div class="contact">
-📧 <a href="mailto:worlddiplomaticnews@outlook.com" style="color:#f59e0b;text-decoration:none;font-weight:bold">worlddiplomaticnews@outlook.com</a>
-</div>
-<p style="margin-top:40px;color:#94a3b8;font-size:.9rem">© 2026 World Diplomatic News</p>
-<script type="text/javascript">
-function googleTranslateElementInit(){new google.translate.TranslateElement({pageLanguage:'mk',includedLanguages:'mk,en,de,fr,it,es,ru,zh,ja,ar,hi,tr'},'google_translate_element')}
-</script>
-<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-<div id="google_translate_element" style="margin:20px auto"></div>
-</body>
-</html>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌍 World Diplomatic News</title>
+    <meta name="description" content="Агрегатор на дипломатски вести од глобални извори">
+    <meta name="keywords" content="дипломатија, вести, ООН, НАТО, ЕУ, превод, ИИ">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #020617 0%, #0f172a 100%);
+            color: #f8fafc;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            margin-bottom: 30px;
+        }
+        
+        .logo {
+            width: 180px;
+            height: 180px;
+            background: linear-gradient(45deg, #6366f1, #8b5cf6, #0ea5e9);
+            border-radius: 20px;
+            margin: 0 auto 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 36px;
+            color: white;
+            box-shadow: 0 0 40px rgba(99, 102, 241, 0.6);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(45deg, #6366f1, #8b5cf6, #0ea5e9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: #94a3b8;
+            margin-bottom: 25px;
+        }
+        
+        #google_translate_element {
+            display: inline-block;
+            margin: 20px auto;
+            text-align: center;
+        }
+        
+        .stats-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        
+        .stat-card {
+            background: rgba(30, 41, 59, 0.85);
+            border: 1px solid rgba(99, 102, 241, 0.4);
+            border-radius: 20px;
+            padding: 25px 30px;
+            min-width: 180px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(99, 102, 241, 0.3);
+            border-color: #6366f1;
+        }
+        
+        .stat-number {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #6366f1;
+            margin-bottom: 10px;
+            font-family: 'Orbitron', sans-serif;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            color: #cbd5e1;
+            font-weight: 500;
+        }
+        
+        .news-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+        
+        .news-card {
+            background: rgba(30, 41, 59, 0.9);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 20px;
+            padding: 25px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .news-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(99, 102, 241, 0.4);
+            border-color: #6366f1;
+        }
+        
+        .news-source {
+            display: inline-block;
+            background: rgba(99, 102, 241, 0.15);
+            color: #6366f1;
+            padding: 6px 15px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            border: 1px solid rgba(99, 102, 241, 0.3);
+        }
+        
+        .news-title {
+            font-size: 1.35rem;
+            color: #f8fafc;
+            margin-bottom: 15px;
+            font-weight: 700;
+            line-height: 1.4;
+            transition: color 0.3s ease;
+        }
+        
+        .news-card:hover .news-title {
+            color: #6366f1;
+        }
+        
+        .news-meta {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: #94a3b8;
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+        
+        .news-description {
+            color: #cbd5e1;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .read-more {
+            display: inline-block;
+            color: #6366f1;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 8px 15px;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            background: rgba(99, 102, 241, 0.05);
+        }
+        
+        .read-more:hover {
+            background: rgba(99, 102, 241, 0.15);
+            border-color: #6366f1;
+            transform: translateX(5px);
+        }
+        
+        .social-section {
+            background: rgba(30, 41, 59, 0.85);
+            border: 1px solid rgba(99, 102, 241, 0.4);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 40px 0;
+            text-align: center;
+        }
+        
+        .social-title {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            color: #6366f1;
+        }
+        
+        .social-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        
+        .social-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .social-btn:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+        }
+        
+        .fb { background: #1877f2; }
+        .tw { background: #1da1f2; }
+        .in { background: #0a66c2; }
+        .tg { background: #0088cc; }
+        .wa { background: #25d366; }
+        .ig { background: #e1306c; }
+        
+        .ai-section {
+            background: rgba(30, 41, 59, 0.85);
+            border: 1px solid rgba(99, 102, 241, 0.4);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 40px 0;
+            text-align: center;
+        }
+        
+        .ai-title {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            color: #0ea5e9;
+        }
+        
+        .ai-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 2
