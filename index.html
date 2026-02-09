@@ -4,416 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🌍 World Diplomatic News</title>
-    <meta name="description" content="Агрегатор на дипломатски вести од глобални извори">
-    <meta name="keywords" content="дипломатија, вести, ООН, НАТО, ЕУ, министерства, амбасади, превод, ИИ">
-    
-    <!-- Икони -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        body {
-            background: linear-gradient(135deg, #020617 0%, #0f172a 100%);
-            color: #f8fafc;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            min-height: 100vh;
-            padding: 20px;
-        }
-        
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-        
-        header {
-            text-align: center;
-            padding: 40px 20px;
-            margin-bottom: 30px;
-            position: relative;
-        }
-        
-        .logo {
-            width: 180px;
-            height: 180px;
-            background: linear-gradient(45deg, #6366f1, #8b5cf6, #0ea5e9);
-            border-radius: 20px;
-            margin: 0 auto 25px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 36px;
-            color: white;
-            box-shadow: 0 0 40px rgba(99, 102, 241, 0.6);
-            animation: pulse 2s infinite;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .logo::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transform: rotate(45deg);
-            animation: shine 3s infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-        
-        @keyframes shine {
-            0% { transform: rotate(45deg) translateX(-100%); }
-            100% { transform: rotate(45deg) translateX(100%); }
-        }
-        
-        h1 {
-            font-size: 2.5rem;
-            background: linear-gradient(45deg, #6366f1, #8b5cf6, #0ea5e9);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 15px;
-            letter-spacing: 1px;
-            font-weight: 700;
-        }
-        
-        .subtitle {
-            font-size: 1.2rem;
-            color: #94a3b8;
-            margin-bottom: 25px;
-        }
-        
-        /* Преведувач */
-        #google_translate_element {
-            display: inline-block;
-            margin: 20px auto;
-            text-align: center;
-        }
-        
-        .goog-te-combo {
-            padding: 8px 15px !important;
-            border-radius: 10px !important;
-            border: 1px solid #6366f1 !important;
-            background: rgba(30, 41, 59, 0.8) !important;
-            color: white !important;
-            font-size: 1rem !important;
-        }
-        
-        .stats-container {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin: 30px 0;
-            flex-wrap: wrap;
-        }
-        
-        .stat-card {
-            background: rgba(30, 41, 59, 0.85);
-            border: 1px solid rgba(99, 102, 241, 0.4);
-            border-radius: 20px;
-            padding: 25px 30px;
-            min-width: 180px;
-            text-align: center;
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-        }
-        
-        .stat-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 35px rgba(99, 102, 241, 0.3);
-            border-color: #6366f1;
-        }
-        
-        .stat-number {
-            font-size: 2.8rem;
-            font-weight: 700;
-            color: #6366f1;
-            margin-bottom: 10px;
-            font-family: 'Orbitron', sans-serif;
-        }
-        
-        .stat-label {
-            font-size: 1rem;
-            color: #cbd5e1;
-            font-weight: 500;
-        }
-        
-        .news-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 25px;
-            margin: 40px 0;
-        }
-        
-        .news-card {
-            background: rgba(30, 41, 59, 0.9);
-            border: 1px solid rgba(99, 102, 241, 0.3);
-            border-radius: 20px;
-            padding: 25px;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .news-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, transparent, rgba(99, 102, 241, 0.05), transparent);
-            transform: translateX(-100%);
-            transition: transform 0.5s ease;
-        }
-        
-        .news-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(99, 102, 241, 0.4);
-            border-color: #6366f1;
-        }
-        
-        .news-card:hover::before {
-            transform: translateX(100%);
-        }
-        
-        .news-source {
-            display: inline-block;
-            background: rgba(99, 102, 241, 0.15);
-            color: #6366f1;
-            padding: 6px 15px;
-            border-radius: 25px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            margin-bottom: 15px;
-            border: 1px solid rgba(99, 102, 241, 0.3);
-        }
-        
-        .news-title {
-            font-size: 1.35rem;
-            color: #f8fafc;
-            margin-bottom: 15px;
-            font-weight: 700;
-            line-height: 1.4;
-            transition: color 0.3s ease;
-        }
-        
-        .news-card:hover .news-title {
-            color: #6366f1;
-        }
-        
-        .news-meta {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            color: #94a3b8;
-            font-size: 0.85rem;
-            margin-bottom: 15px;
-            font-weight: 500;
-        }
-        
-        .news-meta i {
-            color: #6366f1;
-        }
-        
-        .news-description {
-            color: #cbd5e1;
-            font-size: 0.95rem;
-            line-height: 1.7;
-            margin-bottom: 20px;
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-        
-        .read-more {
-            display: inline-block;
-            color: #6366f1;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.95rem;
-            padding: 8px 15px;
-            border: 1px solid rgba(99, 102, 241, 0.4);
-            border-radius: 10px;
-            transition: all 0.3s ease;
-            background: rgba(99, 102, 241, 0.05);
-        }
-        
-        .read-more:hover {
-            background: rgba(99, 102, 241, 0.15);
-            border-color: #6366f1;
-            transform: translateX(5px);
-        }
-        
-        /* Социјални мрежи и месинџери */
-        .social-section {
-            background: rgba(30, 41, 59, 0.85);
-            border: 1px solid rgba(99, 102, 241, 0.4);
-            border-radius: 20px;
-            padding: 30px;
-            margin: 40px 0;
-            text-align: center;
-        }
-        
-        .social-title {
-            font-size: 1.8rem;
-            margin-bottom: 25px;
-            color: #6366f1;
-        }
-        
-        .social-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-            margin-top: 20px;
-        }
-        
-        .social-btn {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            color: white;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        }
-        
-        .social-btn:hover {
-            transform: translateY(-5px) scale(1.1);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
-        }
-        
-        .fb { background: #1877f2; }
-        .tw { background: #1da1f2; }
-        .in { background: #0a66c2; }
-        .tg { background: #0088cc; }
-        .wa { background: #25d366; }
-        .ig { background: #e1306c; }
-        
-        /* ИИ системи */
-        .ai-section {
-            background: rgba(30, 41, 59, 0.85);
-            border: 1px solid rgba(99, 102, 241, 0.4);
-            border-radius: 20px;
-            padding: 30px;
-            margin: 40px 0;
-            text-align: center;
-        }
-        
-        .ai-title {
-            font-size: 1.8rem;
-            margin-bottom: 25px;
-            color: #0ea5e9;
-        }
-        
-        .ai-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-        
-        .ai-card {
-            background: rgba(99, 102, 241, 0.1);
-            border: 1px solid rgba(99, 102, 241, 0.3);
-            border-radius: 15px;
-            padding: 20px;
-            transition: all 0.3s ease;
-        }
-        
-        .ai-card:hover {
-            background: rgba(99, 102, 241, 0.2);
-            transform: scale(1.05);
-        }
-        
-        .ai-icon {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            color: #6366f1;
-        }
-        
-        .ai-name {
-            font-weight: 600;
-            font-size: 1.1rem;
-        }
-        
-        footer {
-            text-align: center;
-            padding: 40px 20px;
-            margin-top: 40px;
-            border-top: 1px solid rgba(99, 102, 241, 0.2);
-            color: #94a3b8;
-            font-size: 0.95rem;
-        }
-        
-        .contact {
-            background: rgba(245, 158, 11, 0.1);
-            border: 1px solid #f59e0b;
-            border-radius: 15px;
-            padding: 25px;
-            margin: 30px auto;
-            max-width: 600px;
-            font-size: 1.2rem;
-        }
-        
-        .contact a {
-            color: #f59e0b;
-            text-decoration: none;
-            font-weight: 600;
-            transition: opacity 0.3s ease;
-        }
-        
-        .contact a:hover {
-            opacity: 0.8;
-            text-decoration: underline;
-        }
-        
-        @media (max-width: 768px) {
-            .news-container {
-                grid-template-columns: 1fr;
-            }
-            
-            .stats-container {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            h1 {
-                font-size: 2rem;
-            }
-            
-            .logo {
-                width: 150px;
-                height: 150px;
-                font-size: 30px;
-            }
-            
-            .social-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .social-btn {
-                width: 70px;
-                height: 70px;
-            }
-        }
+        *{margin:0;padding:0;box-sizing:border-box}body{background:linear-gradient(135deg,#020617 0%,#0f172a 100%);color:#f8fafc;font-family:'Segoe UI',sans-serif;line-height:1.6;min-height:100vh;padding:20px}.container{max-width:1400px;margin:0 auto}header{text-align:center;padding:40px 20px;margin-bottom:30px}.logo{width:180px;height:180px;background:linear-gradient(45deg,#6366f1,#8b5cf6,#0ea5e9);border-radius:20px;margin:0 auto 25px;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:36px;color:white;box-shadow:0 0 40px rgba(99,102,241,.6);animation:pulse 2s infinite}h1{font-size:2.5rem;background:linear-gradient(45deg,#6366f1,#8b5cf6,#0ea5e9);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:15px;letter-spacing:1px;font-weight:700}.subtitle{font-size:1.2rem;color:#94a3b8;margin-bottom:25px}#google_translate_element{display:inline-block;margin:20px auto;text-align:center}.stats-container{display:flex;justify-content:center;gap:30px;margin:30px 0;flex-wrap:wrap}.stat-card{background:rgba(30,41,59,.85);border:1px solid rgba(99,102,241,.4);border-radius:20px;padding:25px 30px;min-width:180px;text-align:center;backdrop-filter:blur(10px);transition:all .3s ease;box-shadow:0 8px 25px rgba(0,0,0,.3)}.stat-card:hover{transform:translateY(-5px);box-shadow:0 12px 35px rgba(99,102,241,.3);border-color:#6366f1}.stat-number{font-size:2.8rem;font-weight:700;color:#6366f1;margin-bottom:10px;font-family:'Orbitron',sans-serif}.stat-label{font-size:1rem;color:#cbd5e1;font-weight:500}.news-container{display:grid;grid-template-columns:repeat(auto-fill,minmax(350px,1fr));gap:25px;margin:40px 0}.news-card{background:rgba(30,41,59,.9);border:1px solid rgba(99,102,241,.3);border-radius:20px;padding:25px;transition:all .4s cubic-bezier(.175,.885,.32,1.275)}.news-card:hover{transform:translateY(-10px);box-shadow:0 15px 40px rgba(99,102,241,.4);border-color:#6366f1}.news-source{display:inline-block;background:rgba(99,102,241,.15);color:#6366f1;padding:6px 15px;border-radius:25px;font-weight:600;font-size:.9rem;margin-bottom:15px;border:1px solid rgba(99,102,241,.3)}.news-title{font-size:1.35rem;color:#f8fafc;margin-bottom:15px;font-weight:700;line-height:1.4;transition:color .3s ease}.news-card:hover .news-title{color:#6366f1}.news-meta{display:flex;align-items:center;gap:15px;color:#94a3b8;font-size:.85rem;margin-bottom:15px;font-weight:500}.news-description{color:#cbd5e1;font-size:.95rem;line-height:1.7;margin-bottom:20px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}.read-more{display:inline-block;color:#6366f1;text-decoration:none;font-weight:600;font-size:.95rem;padding:8px 15px;border:1px solid rgba(99,102,241,.4);border-radius:10px;transition:all .3s ease;background:rgba(99,102,241,.05)}.read-more:hover{background:rgba(99,102,241,.15);border-color:#6366f1;transform:translateX(5px)}.social-section{background:rgba(30,41,59,.85);border:1px solid rgba(99,102,241,.4);border-radius:20px;padding:30px;margin:40px 0;text-align:center}.social-title{font-size:1.8rem;margin-bottom:25px;color:#6366f1}.social-buttons{display:flex;justify-content:center;gap:15px;flex-wrap:wrap;margin-top:20px}.social-btn{width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;color:white;text-decoration:none;transition:all .3s ease;box-shadow:0 5px 15px rgba(0,0,0,.3)}.social-btn:hover{transform:translateY(-5px) scale(1.1);box-shadow:0 8px 25px rgba(0,0,0,.4)}.fb{background:#1877f2}.tw{background:#1da1f2}.in{background:#0a66c2}.tg{background:#0088cc}.wa{background:#25d366}.ig{background:#e1306c}.ai-section{background:rgba(30,41,59,.85);border:1px solid rgba(99,102,241,.4);border-radius:20px;padding:30px;margin:40px 0;text-align:center}.ai-title{font-size:1.8rem;margin-bottom:25px;color:#0ea5e9}.ai-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:20px;margin-top:20px}.ai-card{background:rgba(99,102,241,.1);border:1px solid rgba(99,102,241,.3);border-radius:15px;padding:20px;transition:all .3s ease}.ai-card:hover{background:rgba(99,102,241,.2);transform:scale(1.05)}.ai-icon{font-size:2.5rem;margin-bottom:15px;color:#6366f1}.ai-name{font-weight:600;font-size:1.1rem}footer{text-align:center;padding:40px 20px;margin-top:40px;border-top:1px solid rgba(99,102,241,.2);color:#94a3b8;font-size:.95rem}.contact{background:rgba(245,158,11,.1);border:1px solid #f59e0b;border-radius:15px;padding:25px;margin:30px auto;max-width:600px;font-size:1.2rem}.contact a{color:#f59e0b;text-decoration:none;font-weight:600;transition:opacity .3s ease}.contact a:hover{opacity:.8;text-decoration:underline}
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <div class="container">
@@ -421,38 +15,21 @@
             <div class="logo">WDN</div>
             <h1>WORLD DIPLOMATIC NEWS</h1>
             <p class="subtitle">🌍 Агрегатор на дипломатски вести од глобални извори</p>
-            
-            <!-- Google Translate -->
             <div id="google_translate_element"></div>
         </header>
         
         <div class="stats-container">
-            <div class="stat-card">
-                <div class="stat-number">600+</div>
-                <div class="stat-label">Дипломатски извори</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">150+</div>
-                <div class="stat-label">Јазици за превод</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">7</div>
-                <div class="stat-label">ИИ системи</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">50+</div>
-                <div class="stat-label">Социјални мрежи</div>
-            </div>
+            <div class="stat-card"><div class="stat-number">600+</div><div class="stat-label">Дипломатски извори</div></div>
+            <div class="stat-card"><div class="stat-number">150+</div><div class="stat-label">Јазици за превод</div></div>
+            <div class="stat-card"><div class="stat-number">7</div><div class="stat-label">ИИ системи</div></div>
+            <div class="stat-card"><div class="stat-number">50+</div><div class="stat-label">Социјални мрежи</div></div>
         </div>
         
         <div class="news-container">
-            <!-- Примерни вести (симулирани) -->
             <div class="news-card">
                 <div class="news-source">UN News</div>
                 <h3 class="news-title">ООН повикува на дијалог по напнатост во регионот</h3>
-                <div class="news-meta">
-                    <span><i class="far fa-calendar"></i> 10 февруари 2026, 14:30</span>
-                </div>
+                <div class="news-meta"><span>📅 10 февруари 2026, 14:30</span></div>
                 <p class="news-description">Генералниот секретар на ООН денеска изрази загриженост за зголемената напнатост и повика на сите страни да го продолжат дијалогот за мирно решавање на споровите.</p>
                 <a href="#" class="read-more">Читај повеќе →</a>
             </div>
@@ -460,9 +37,7 @@
             <div class="news-card">
                 <div class="news-source">NATO</div>
                 <h3 class="news-title">НАТО зголемува присутност во источна Европа</h3>
-                <div class="news-meta">
-                    <span><i class="far fa-calendar"></i> 10 февруари 2026, 12:15</span>
-                </div>
+                <div class="news-meta"><span>📅 10 февруари 2026, 12:15</span></div>
                 <p class="news-description">Северноатлантскиот сојуз објави дека ќе ги зголеми воените вежби во источна Европа како дел од мерките за колективна одбрана и стабилност во регионот.</p>
                 <a href="#" class="read-more">Читај повеќе →</a>
             </div>
@@ -470,9 +45,7 @@
             <div class="news-card">
                 <div class="news-source">EU External Action</div>
                 <h3 class="news-title">ЕУ и Западен Балкан: Нова стратегија за интеграција</h3>
-                <div class="news-meta">
-                    <span><i class="far fa-calendar"></i> 10 февруари 2026, 10:45</span>
-                </div>
+                <div class="news-meta"><span>📅 10 февруари 2026, 10:45</span></div>
                 <p class="news-description">Европската комисија ја претстави новата стратегија за интеграција на земјите од Западниот Балкан со акцент на економски развој и правна држава.</p>
                 <a href="#" class="read-more">Читај повеќе →</a>
             </div>
@@ -480,77 +53,34 @@
             <div class="news-card">
                 <div class="news-source">North Macedonia MFA</div>
                 <h3 class="news-title">Северна Македонија ги зголемува дипломатските активности</h3>
-                <div class="news-meta">
-                    <span><i class="far fa-calendar"></i> 10 февруари 2026, 09:20</span>
-                </div>
+                <div class="news-meta"><span>📅 10 февруари 2026, 09:20</span></div>
                 <p class="news-description">Министерството за надворешни работи објави дека ќе ги зголеми дипломатските активности со земјите од регионот со цел за подобрување на регионалната соработка.</p>
                 <a href="#" class="read-more">Читај повеќе →</a>
             </div>
         </div>
         
-        <!-- Социјални мрежи и месинџери -->
         <div class="social-section">
             <h2 class="social-title">📱 Сподели на социјални мрежи и месинџери</h2>
-            <p style="color: #94a3b8; margin-bottom: 25px; max-width: 600px; margin-left: auto; margin-right: auto;">
-                Сподели ги дипломатските вести со пријатели и колеги низ светот
-            </p>
             <div class="social-buttons">
-                <a href="https://www.facebook.com/sharer/sharer.php?u=https://worlddiplomaticnews.github.io/world-diplomatic-news/" target="_blank" class="social-btn fb" title="Facebook">
-                    <i class="fab fa-facebook-f"></i>
-                </a>
-                <a href="https://twitter.com/intent/tweet?url=https://worlddiplomaticnews.github.io/world-diplomatic-news/&text=World%20Diplomatic%20News" target="_blank" class="social-btn tw" title="Twitter">
-                    <i class="fab fa-twitter"></i>
-                </a>
-                <a href="https://www.linkedin.com/shareArticle?url=https://worlddiplomaticnews.github.io/world-diplomatic-news/&title=World%20Diplomatic%20News" target="_blank" class="social-btn in" title="LinkedIn">
-                    <i class="fab fa-linkedin-in"></i>
-                </a>
-                <a href="https://telegram.me/share/url?url=https://worlddiplomaticnews.github.io/world-diplomatic-news/&text=World%20Diplomatic%20News" target="_blank" class="social-btn tg" title="Telegram">
-                    <i class="fab fa-telegram-plane"></i>
-                </a>
-                <a href="https://api.whatsapp.com/send?text=World%20Diplomatic%20News%20-%20https://worlddiplomaticnews.github.io/world-diplomatic-news/" target="_blank" class="social-btn wa" title="WhatsApp">
-                    <i class="fab fa-whatsapp"></i>
-                </a>
-                <a href="https://www.instagram.com/" target="_blank" class="social-btn ig" title="Instagram">
-                    <i class="fab fa-instagram"></i>
-                </a>
+                <a href="https://www.facebook.com/sharer/sharer.php?u=https://worlddiplomaticnews.github.io/world-diplomatic-news/" target="_blank" class="social-btn fb" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://twitter.com/intent/tweet?url=https://worlddiplomaticnews.github.io/world-diplomatic-news/&text=World%20Diplomatic%20News" target="_blank" class="social-btn tw" title="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.linkedin.com/shareArticle?url=https://worlddiplomaticnews.github.io/world-diplomatic-news/&title=World%20Diplomatic%20News" target="_blank" class="social-btn in" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://telegram.me/share/url?url=https://worlddiplomaticnews.github.io/world-diplomatic-news/&text=World%20Diplomatic%20News" target="_blank" class="social-btn tg" title="Telegram"><i class="fab fa-telegram-plane"></i></a>
+                <a href="https://api.whatsapp.com/send?text=World%20Diplomatic%20News%20-%20https://worlddiplomaticnews.github.io/world-diplomatic-news/" target="_blank" class="social-btn wa" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://www.instagram.com/" target="_blank" class="social-btn ig" title="Instagram"><i class="fab fa-instagram"></i></a>
             </div>
         </div>
         
-        <!-- ИИ системи -->
         <div class="ai-section">
             <h2 class="ai-title">🤖 Интегрирани ИИ системи</h2>
-            <p style="color: #94a3b8; margin-bottom: 25px; max-width: 600px; margin-left: auto; margin-right: auto;">
-                Нашата платформа е компатибилна со водечките ИИ системи за анализа на дипломатски вести
-            </p>
             <div class="ai-grid">
-                <div class="ai-card">
-                    <div class="ai-icon">🧠</div>
-                    <div class="ai-name">GPT-4</div>
-                </div>
-                <div class="ai-card">
-                    <div class="ai-icon">🤖</div>
-                    <div class="ai-name">Claude 3</div>
-                </div>
-                <div class="ai-card">
-                    <div class="ai-icon">🐉</div>
-                    <div class="ai-name">Qwen</div>
-                </div>
-                <div class="ai-card">
-                    <div class="ai-icon">🐼</div>
-                    <div class="ai-name">Kimi</div>
-                </div>
-                <div class="ai-card">
-                    <div class="ai-icon">🔍</div>
-                    <div class="ai-name">Perplexity</div>
-                </div>
-                <div class="ai-card">
-                    <div class="ai-icon">⚡</div>
-                    <div class="ai-name">Grok</div>
-                </div>
-                <div class="ai-card">
-                    <div class="ai-icon">🔍</div>
-                    <div class="ai-name">DeepSeek</div>
-                </div>
+                <div class="ai-card"><div class="ai-icon">🧠</div><div class="ai-name">GPT-4</div></div>
+                <div class="ai-card"><div class="ai-icon">🤖</div><div class="ai-name">Claude 3</div></div>
+                <div class="ai-card"><div class="ai-icon">🐉</div><div class="ai-name">Qwen</div></div>
+                <div class="ai-card"><div class="ai-icon">🐼</div><div class="ai-name">Kimi</div></div>
+                <div class="ai-card"><div class="ai-icon">🔍</div><div class="ai-name">Perplexity</div></div>
+                <div class="ai-card"><div class="ai-icon">⚡</div><div class="ai-name">Grok</div></div>
+                <div class="ai-card"><div class="ai-icon">🔍</div><div class="ai-name">DeepSeek</div></div>
             </div>
         </div>
         
@@ -560,29 +90,20 @@
         
         <footer>
             <p>© 2026 World Diplomatic News - Сите права задржани</p>
-            <p style="margin-top: 10px; font-size: 0.9rem; color: #64748b;">
-                Вести од: ООН, НАТО, ЕУ, Министерства за надворешни работи, Дипломатски амбасади
-            </p>
-            <p style="margin-top: 10px; font-size: 0.85rem; color: #94a3b8;">
-                ⚠️ Овој сајт прикажува примерни вести. За вистински РСС вести во реално време, користете ја нашата <a href="https://replit.com/@worlddiplomatic/SlategraySuspiciousCompilerbug" target="_blank" style="color: #6366f1; text-decoration: underline;">Реплит верзија</a>.
-            </p>
+            <p style="margin-top:10px;font-size:.9rem;color:#64748b">Вести од: ООН, НАТО, ЕУ, Министерства за надворешни работи</p>
         </footer>
     </div>
 
-    <!-- Google Translate Script -->
     <script type="text/javascript">
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({
                 pageLanguage: 'mk',
                 includedLanguages: 'mk,en,de,fr,it,es,nl,pt,ru,ar,zh,ja,ko,hi,tr,el,bg,ro,pl,cs,sk,hu,hr,sl,sr,uk,lv,lt,et,fi,sv,no,da,is,mt,ga,he,th,vi,id,ms,fil,tl,ca,eu,gl,cy,bs,sq',
-                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-                autoDisplay: false
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
             }, 'google_translate_element');
         }
     </script>
     <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-    
-    <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </body>
 </html>
